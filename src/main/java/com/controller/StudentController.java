@@ -39,10 +39,10 @@ public class StudentController {
 
 
     /**
-     * ���ѧ��
+     * 添加学生
      *
-     * @param request ������ӵ�������Ϣ
-     * @return ��ӳɹ������Ϣ
+     * @param request 请求添加的学生信息
+     * @return 添加成功与否信息
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
@@ -66,12 +66,11 @@ public class StudentController {
         return result;
     }
 
-
     /**
-     * ����ѧ��IDɾ��ѧ��
+     * 根据学生ID删除学生
      *
-     * @param request Ŀ��ѧ��ID
-     * @return �ɹ������Ϣ
+     * @param request 目标学生ID
+     * @return 成功与否信息
      */
     @RequestMapping(value = "/del", method = RequestMethod.POST)
     @ResponseBody
@@ -85,25 +84,25 @@ public class StudentController {
 
 
     /**
-     * ����ѧ��ID����ѧ��
+     * 根据学生ID更新学生
      *
-     * @param request Ŀ��ѧ��ID
-     * @return �ɹ������Ϣ
+     * @param request 目标学生ID
+     * @return 成功与否信息
      */
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
     public JSONResult updateStudent(HttpServletRequest request) {
         JSONResult result;
-//        Integer StudentId = Integer.parseInt(request.getParameter("StudentId"));
+        Integer StudentId = Integer.parseInt(request.getParameter("StudentId"));
         String StudentName = request.getParameter("StudentName");
         String StudentAddress = request.getParameter("StudentAddress");
         String StudentSex = request.getParameter("StudentSex");
         Student student = new Student();
-//        student.setId(StudentId);��Ϊû�����id�������ķ���ҳɾ��
+        student.setId(StudentId);
         student.setName(StudentName);
         student.setAddress(StudentAddress);
         student.setSex(StudentSex);
-        if (studentService.addStudent(student)) {
+        if (studentService.updateStudent(student)) {
             result = new JSONResult(student);
             result.setMessage("success");
         } else {
@@ -115,10 +114,10 @@ public class StudentController {
 
 
     /**
-     * ����ѧ��ID��ѯѧ��
+     * 根据新闻ID更新学生
      *
-     * @param request Ŀ��ѧ��ID
-     * @return Ŀ��ѧ����Ϣ
+     * @param request 目标学生ID
+     * @return 成功与否信息
      */
     @RequestMapping(value = "/find", method = RequestMethod.GET)
     @ResponseBody

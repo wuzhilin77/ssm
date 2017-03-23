@@ -47,7 +47,7 @@ function addStudent(StudentId) {
  * @decription:删除案例
  */
 function delStudent(StudentId) {
-    var param = "id=" + StudentId;
+    var param = "StudentId=" + StudentId;
     $.ajax({
         type: "POST",
         dataType: "json",

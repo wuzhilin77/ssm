@@ -15,7 +15,7 @@
       type: "GET",
       url: "rest/student/find",  //根据id查询记录
       data:{
-        id:StudentId
+        StudentId:StudentId
       },
       dataType: "json",
       success:function(data){
@@ -39,6 +39,7 @@
         dataType: "json",
         url: "rest/student/update",  //更新路径
         data: {
+          StudentId: $("#id").val(StudentId),
           StudentName: $("#name").val(StudentName),
           StudentAddress: $("#address").val(StudentAddress),
           StudentSex: $("#sex").val(StudentSex)
